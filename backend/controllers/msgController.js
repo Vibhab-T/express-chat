@@ -31,6 +31,14 @@ exports.sendMessage = async (req, res, next) => {
 		res.status(201).json({ message: newMessage });
 	} catch (error) {
 		console.log('Err0r in Send Message Controller: ', error.message);
-		res.status(500).json({ error: 'Server Error At MSGCTRL-SENDMSG' });
+		res.status(500).json({ error: 'Server Error At MSGCTRL-SMSG' });
+	}
+};
+
+exports.getMessages = async (req, res, next) => {
+	try {
+	} catch (error) {
+		console.log('Error in GET MESSAGES: ', error.message);
+		res.status(500).json({ error: 'Server Error At MSGCTRL-GMSG' });
 	}
 };
