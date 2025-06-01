@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema(
 			default: '',
 		},
 	},
-	{ timestamps: true } // createdAt, updatedAt
+	{ timestamps: true } // createdAt, updatedAt for "member since ----"
 );
 
 const User = mongoose.model('user', userSchema);
