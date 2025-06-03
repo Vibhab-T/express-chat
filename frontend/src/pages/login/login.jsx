@@ -4,7 +4,7 @@ const Login = () => {
 			<div className='bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 p-8 shadow-md'>
 				<h1 className='text-white text-3xl font-semibold text-center'>
 					Login
-					<span className='text-blue-400'> | MERN Chat App</span>
+					<span className='text-green-400'> | MERN Chat App</span>
 				</h1>
 				<form>
 					<div>
@@ -29,7 +29,9 @@ const Login = () => {
 						Sign Up For A New Account?
 					</a>
 
-					<div className='btn btn-block btn-sm mt-2'>Login</div>
+					<div className='btn btn-block btn-sm mt-2 bg-green-200 text-indigo-500 rouded-sm border-none hover:bg-green-300 hover:text-blue-600'>
+						Login
+					</div>
 				</form>
 			</div>
 		</div>
