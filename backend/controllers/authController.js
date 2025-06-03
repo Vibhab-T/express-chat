@@ -28,8 +28,8 @@ exports.authenticationLogin = async (req, res, next) => {
 			profilePic: user.profilePic,
 		});
 	} catch (error) {
-		console.log('Error in Log in Controller', error.message);
-		res.status(500).json({ error: 'Server Error [Log In Ctrls]' });
+		console.log('Error in AUCTRL-LGIN', error.message);
+		res.status(500).json({ error: 'Server Error AUCTRL-LGIN' });
 	}
 };
 
@@ -80,8 +80,8 @@ exports.authenticationSignup = async (req, res, next) => {
 			});
 		}
 	} catch (error) {
-		console.log('Error in Signup Controller', error.message);
-		res.status(500).json({ error: 'Server Error [Sign Up Ctrls]' });
+		console.log('Error in AUCTRL-SNUP', error.message);
+		res.status(500).json({ error: 'Server Error AUCTRL-SNUP' });
 	}
 };
 
@@ -90,7 +90,7 @@ exports.authenticationLogout = async (req, res, next) => {
 		res.cookie('jwt', '', { maxAge: 0 });
 		res.status(200).json({ message: 'Logged Out Succesfully' });
 	} catch (error) {
-		console.log('Error in Log Out Controller', error.message);
-		res.status(500).json({ error: 'Server Error [Log Out Ctrls]' });
+		console.log('Error in AUCTRL-LGOUT', error.message);
+		res.status(500).json({ error: 'Server Error AUCTRL-LGOUT' });
 	}
 };

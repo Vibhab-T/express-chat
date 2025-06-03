@@ -1,16 +1,17 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
-dotenv.config();
 
 const connectToMongo = require('./db/mongoConnect'); //for mongo connection
 
 const authRoutes = require('./routes/authRoutes'); // Authentication Routes
-const messageRoutes = require('./routes/messageRoutes');
+const messageRoutes = require('./routes/messageRoutes'); // Message Routes
+const userRoutes = require('./routes/userRoutes'); //User Routes
 
-const PORT = process.env.PORT || 5000;
+dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json()); //parse json from requests
 app.use(cookieParser()); //parse cookies
@@ -20,6 +21,7 @@ app.get('/', (req, res, next) => {
 });
 app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
+app.use('/api/users', userRoutes);
 
 app.listen(PORT, () => {
 	connectToMongo();
