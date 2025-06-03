@@ -19,7 +19,6 @@ app.use(cookieParser()); //parse cookies
 app.get('/', (req, res, next) => {
 	res.send('<h1>BACKEND SERVER RUNNING</h1>');
 });
-
 app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
 
