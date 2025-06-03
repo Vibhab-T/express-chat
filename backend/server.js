@@ -1,14 +1,13 @@
 const express = require('express');
-
 const cookieParser = require('cookie-parser');
+const dotenv = require('dotenv');
+dotenv.config();
+
+const connectToMongo = require('./db/mongoConnect'); //for mongo connection
 
 const authRoutes = require('./routes/authRoutes'); // Authentication Routes
 const messageRoutes = require('./routes/messageRoutes');
 
-const connectToMongo = require('./db/mongoConnect'); //for mongo connection
-
-const dotenv = require('dotenv');
-dotenv.config();
 const PORT = process.env.PORT || 5000;
 
 const app = express();

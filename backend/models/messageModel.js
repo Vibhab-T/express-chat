@@ -20,6 +20,6 @@ const messageSchema = new mongoose.Schema(
 	{ timestamps: true } //createdAt, updatedAt
 );
 
-const Message = mongoose.model('message', messageSchema);
+const Message = mongoose.model('Message', messageSchema);
 
 module.exports = Message;

@@ -19,6 +19,6 @@ const convoSchema = mongoose.Schema(
 	{ timestamps: true }
 );
 
-const Convo = mongoose.model('convo', convoSchema);
+const Convo = mongoose.model('Convo', convoSchema);
 
 module.exports = Convo;

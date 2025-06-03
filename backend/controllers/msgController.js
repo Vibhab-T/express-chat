@@ -37,6 +37,20 @@ exports.sendMessage = async (req, res, next) => {
 
 exports.getMessages = async (req, res, next) => {
 	try {
+		const { id: userToChatId } = req.params;
+		const senderId = req.user._id;
+
+		const conversation = await Convo.findOne({
+			participants: { $all: [senderId, userToChatId] },
+		}).populate('messages');
+
+		if (!conversation) {
+			return res.status(200).json([]);
+		}
+
+		const messages = conversation.messages;
+
+		res.status(200).json(messages);
 	} catch (error) {
 		console.log('Error in GET MESSAGES: ', error.message);
 		res.status(500).json({ error: 'Server Error At MSGCTRL-GMSG' });
