@@ -6,7 +6,7 @@ const SignUp = () => {
 			<div className='bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 p-8 shadow-md'>
 				<h1 className='text-white text-3xl font-semibold text-center'>
 					Sign Up
-					<span className='text-green-400'> | MERN Chat App</span>
+					<span className='text-teal-500'> | MERN Chat App</span>
 				</h1>
 				<form>
 					<div>
@@ -15,7 +15,7 @@ const SignUp = () => {
 							<input
 								type='text'
 								placeholder='Full Name'
-								className='w-full input input-bordered h-10'
+								className='w-full input input-bordered h-10 rounded-full'
 							/>
 						</div>
 						<div>
@@ -23,7 +23,7 @@ const SignUp = () => {
 							<input
 								type='text'
 								placeholder='Username'
-								className='w-full input input-bordered h-10'
+								className='w-full input input-bordered h-10 rounded-full'
 							/>
 						</div>
 						<div>
@@ -31,7 +31,7 @@ const SignUp = () => {
 							<input
 								type='password'
 								placeholder='Password'
-								className='w-full input input-bordered h-10'
+								className='w-full input input-bordered h-10 rounded-full'
 							/>
 						</div>
 						<div>
@@ -39,7 +39,7 @@ const SignUp = () => {
 							<input
 								type='password'
 								placeholder='Confirm Password'
-								className='w-full input input-bordered h-10'
+								className='w-full input input-bordered h-10 rounded-full'
 							/>
 						</div>
 
@@ -51,7 +51,7 @@ const SignUp = () => {
 							Already Have An Account?
 						</a>
 
-						<div className='btn btn-block btn-sm mt-2 bg-green-200 text-indigo-500 rouded-sm border-none hover:bg-green-300 hover:text-blue-600'>
+						<div className='btn btn-block btn-sm mt-2 rounded-full bg-transparent text-teal-500 border-green-200 hover:bg-green-300 hover:text-blue-600'>
 							Sign Up
 						</div>
 					</div>
