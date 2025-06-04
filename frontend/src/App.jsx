@@ -1,18 +1,23 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
 
 import Home from './pages/home/home.jsx';
 import Login from './pages/login/login.jsx';
 import SignUp from './pages/signup/signup.jsx';
 import { Toaster } from 'react-hot-toast';
+import useAuthContext from './hooks/useAuthContext.js';
 
 function App() {
+	const { authUser } = useAuthContext();
 	return (
 		<div className='p-4 h-screen flex items-center justify-center'>
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/login' element={<Login />} />
-				<Route path='/signup' element={<SignUp />} />
+				<Route
+					path='/signup'
+					element={authUser ? <Navigate to='/' /> : <SignUp />}
+				/>
 			</Routes>
 			<Toaster />
 		</div>
