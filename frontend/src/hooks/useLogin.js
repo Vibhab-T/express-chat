@@ -2,24 +2,12 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import useAuthContext from './useAuthContext';
 
-const useSignup = () => {
+const useLogin = () => {
 	const [loading, setLoading] = useState(false);
 	const { setAuthUser } = useAuthContext();
 
-	const signup = async ({
-		fullName,
-		userName,
-		password,
-		confirmPassword,
-		gender,
-	}) => {
-		const validated = handleSignupValidation({
-			fullName,
-			userName,
-			password,
-			confirmPassword,
-			gender,
-		});
+	const login = async (userName, password) => {
+		const validated = validateLogin(userName, password);
 
 		if (!validated) {
 			return;
@@ -27,15 +15,12 @@ const useSignup = () => {
 
 		setLoading(true);
 		try {
-			const res = await fetch('/api/auth/signup', {
+			const res = await fetch('/api/auth/login', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
-					fullName,
 					userName,
 					password,
-					confirmPassword,
-					gender,
 				}),
 			});
 
@@ -44,9 +29,6 @@ const useSignup = () => {
 			if (data.error) {
 				throw new Error(data.error);
 			}
-
-			console.log(data);
-
 			//now save to local storage
 			localStorage.setItem('user-info', JSON.stringify(data));
 			//update context
@@ -58,30 +40,21 @@ const useSignup = () => {
 		}
 	};
 
-	return { loading, signup };
+	return { loading, login };
 };
 
-export default useSignup;
+function validateLogin(userName, password) {
+	if (!userName || !password) {
+		toast.error('Please fill all the fields');
+		return false;
+	}
 
-function handleSignupValidation({
-	userName,
-	fullName,
-	password,
-	confirmPassword,
-	gender,
-}) {
-	if (!fullName || !userName || !password || !confirmPassword || !gender) {
-		toast.error('Please fill out all the fields');
-		return false;
-	}
-	if (password !== confirmPassword) {
-		toast.error('Passwords do not match');
-		return false;
-	}
 	if (password.length < 6) {
-		toast.error('Password must be atleast 6 characters');
+		toast.error('Password must be atleast 6 characters long');
 		return false;
 	}
 
 	return true;
 }
+
+export default useLogin;
