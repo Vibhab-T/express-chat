@@ -8,9 +8,10 @@ const authRoutes = require('./routes/authRoutes'); // Authentication Routes
 const messageRoutes = require('./routes/messageRoutes'); // Message Routes
 const userRoutes = require('./routes/userRoutes'); //User Routes
 
+const { app, server } = require('./socket/socket');
+
 dotenv.config();
 
-const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json()); //parse json from requests
@@ -23,7 +24,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/users', userRoutes);
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
 	connectToMongo();
 	console.log(`Server Running On ${PORT}`);
 });
