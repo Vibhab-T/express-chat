@@ -7,7 +7,7 @@ const Logout = () => {
 	return (
 		<div className='mt-auto'>
 			{!loading ? (
-				<button className='btn btn-cirlce bg-transparent text-teal-500 border-green-200 rounded-full'>
+				<button className='btn btn-cirlce bg-transparent text-teal-500 border-green-200 rounded-full hover:bg-accent-content'>
 					<BiLogOutCircle
 						className='w-6 h-6 outline-none curson-pointer '
 						onClick={logout}
