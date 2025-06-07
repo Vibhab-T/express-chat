@@ -4,15 +4,19 @@ import useConversation from '../zustand/useConversation';
 
 const useListenMessages = () => {
 	const { socket } = useSocketContext();
-	const { messages, setMessages } = useConversation();
+	const { setMessages } = useConversation();
 
 	useEffect(() => {
-		socket?.on('newMessage', (newMessage) => {
-			setMessages([...messages, newMessage]);
-		});
+		if (!socket) return;
 
-		return () => socket?.off('newMessage');
-	}, [socket, setMessages, messages]);
+		const hadnleNewMessage = (newMessage) => {
+			setMessages((prevMessages) => [...prevMessages, newMessage]);
+		};
+
+		socket?.on('newMessage', 'handleNewMessage');
+
+		return () => socket?.off('newMessage', hadnleNewMessage);
+	}, [socket, setMessages]);
 };
 
 export default useListenMessages;

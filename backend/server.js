@@ -1,6 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
+const path = require('path');
 
 const connectToMongo = require('./db/mongoConnect'); //for mongo connection
 
@@ -12,19 +13,24 @@ const { app, server } = require('./socket/socket');
 
 dotenv.config();
 
+__dirname = path.resolve();
+// PORT should be assigned after calling dotenv.config() because we need to access the env variables. Didn't realize while recording the video. Sorry for the confusion.
 const PORT = process.env.PORT || 5000;
 
-app.use(express.json()); //parse json from requests
-app.use(cookieParser()); //parse cookies
+app.use(express.json()); // to parse the incoming requests with JSON payloads (from req.body)
+app.use(cookieParser());
 
-app.get('/', (req, res, next) => {
-	res.send('<h1>BACKEND SERVER RUNNING</h1>');
-});
 app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/users', userRoutes);
 
+app.use(express.static(path.join(__dirname, '/frontend/dist')));
+
+app.get('*name', (req, res) => {
+	res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
+});
+
 server.listen(PORT, () => {
 	connectToMongo();
-	console.log(`Server Running On ${PORT}`);
+	console.log(`Server Running on port ${PORT}`);
 });
