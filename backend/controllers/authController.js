@@ -29,7 +29,9 @@ exports.authenticationLogin = async (req, res, next) => {
 		});
 	} catch (error) {
 		console.log('Error in AUCTRL-LGIN', error.message);
-		res.status(500).json({ error: 'Server Error AUCTRL-LGIN' });
+		res
+			.status(500)
+			.json({ error: `Server Error AUCTRL-LGIN: ${error.message}` });
 	}
 };
 
