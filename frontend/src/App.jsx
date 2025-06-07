@@ -3,7 +3,7 @@ import './App.css';
 
 import Home from './pages/home/home.jsx';
 import Login from './pages/login/login.jsx';
-import SignUp from './pages/signup/SignUp.jsx';
+import Signup from './pages/signup/abc.jsx';
 import { Toaster } from 'react-hot-toast';
 import useAuthContext from './hooks/useAuthContext.js';
 
@@ -22,7 +22,7 @@ function App() {
 				/>
 				<Route
 					path='/signup'
-					element={authUser ? <Navigate to='/' /> : <SignUp />}
+					element={authUser ? <Navigate to='/' /> : <Signup />}
 				/>
 			</Routes>
 			<Toaster />
