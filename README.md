@@ -19,4 +19,4 @@ This is a full-stack real-time messaging application built using the MERN stack 
 - Deployment: Render
 
 DEMO:
-https://express-chat-rr3b.onrender.com/
+https://express-chat-lbor.onrender.com/
